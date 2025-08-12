@@ -1,0 +1,278 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Minimalist Color Palette */
+    --color-primary: 16 16 16;           /* Near black */
+    --color-secondary: 250 250 250;      /* Off white */
+    --color-accent: 115 115 115;         /* Mid gray */
+    --color-muted: 163 163 163;          /* Light gray */
+    --color-surface: 23 23 23;           /* Dark surface */
+    --color-border: 38 38 38;            /* Subtle border */
+    --color-success: 34 197 94;          /* Subtle green */
+    --color-warning: 251 191 36;         /* Subtle amber */
+    --color-error: 239 68 68;            /* Subtle red */
+  }
+
+  * {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-black text-white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  /* Typography */
+  .heading-1 {
+    @apply text-4xl md:text-5xl font-light tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-2xl md:text-3xl font-light tracking-tight;
+  }
+
+  .heading-3 {
+    @apply text-xl md:text-2xl font-normal;
+  }
+
+  .body-text {
+    @apply text-base text-neutral-400 leading-relaxed;
+  }
+
+  .label-text {
+    @apply text-xs uppercase tracking-wider text-neutral-500 font-medium;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-white text-black px-6 py-3 rounded-sm font-medium 
+           hover:bg-neutral-200 transition-all duration-300
+           focus:outline-none focus:ring-1 focus:ring-white focus:ring-offset-2 focus:ring-offset-black;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-white px-6 py-3 rounded-sm font-medium 
+           border border-neutral-800 hover:border-neutral-600 
+           transition-all duration-300
+           focus:outline-none focus:ring-1 focus:ring-neutral-600;
+  }
+
+  .btn-ghost {
+    @apply text-neutral-400 hover:text-white px-4 py-2 
+           transition-colors duration-200;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-neutral-950 border border-neutral-900 rounded-sm
+           hover:border-neutral-800 transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply card hover:shadow-2xl hover:-translate-y-0.5 cursor-pointer;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full bg-transparent border border-neutral-900 rounded-sm
+           px-4 py-3 text-white placeholder-neutral-600
+           focus:border-neutral-700 focus:outline-none focus:ring-1 
+           focus:ring-neutral-700 transition-all duration-200;
+  }
+
+  /* Status Indicators */
+  .status-pending {
+    @apply text-amber-400 bg-amber-400/10 border-amber-400/20;
+  }
+
+  .status-active {
+    @apply text-emerald-400 bg-emerald-400/10 border-emerald-400/20;
+  }
+
+  .status-rejected {
+    @apply text-red-400 bg-red-400/10 border-red-400/20;
+  }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.05); }
+  }
+
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes rotate-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    25% { transform: translateY(-10px) translateX(5px); }
+    50% { transform: translateY(5px) translateX(-5px); }
+    75% { transform: translateY(-5px) translateX(10px); }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .animate-rotate-reverse {
+    animation: rotate-reverse 30s linear infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neutral-800 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-700;
+  }
+}
+
+/* Override gradient classes */
+.bg-gradient-to-r {
+  background-image: none !important;
+  background-color: white !important;
+}
+
+.from-emerald-500,
+.to-cyan-500 {
+  background: transparent !important;
+}
+
+.bg-clip-text,
+.text-transparent {
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  color: white !important;
+}
+
+/* Override color utilities */
+.bg-gray-900 { background-color: black !important; }
+.bg-gray-800 { background-color: rgb(10 10 10) !important; }
+.bg-gray-700 { background-color: rgb(23 23 23) !important; }
+.border-gray-800 { border-color: rgb(23 23 23) !important; }
+.border-gray-700 { border-color: rgb(23 23 23) !important; }
+.text-gray-400 { color: rgb(163 163 163) !important; }
+.text-gray-500 { color: rgb(115 115 115) !important; }
+.text-gray-600 { color: rgb(82 82 82) !important; }
+.text-emerald-400 { color: white !important; }
+.text-emerald-500 { color: white !important; }
+.bg-emerald-500 { background-color: white !important; }
+
+/* Opacity utilities override */
+[class*="bg-emerald-500/"] { 
+  background-color: rgba(255, 255, 255, 0.1) !important; 
+}
+
+[class*="border-emerald-500/"] { 
+  border-color: rgba(255, 255, 255, 0.2) !important; 
+}
+
+/* Premium hover effects */
+.hover-lift {
+  transition: transform 300ms;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-glow {
+  transition: box-shadow 300ms;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+}
+
+/* AppKit button customization */
+appkit-button {
+  --wck-color-fg-1: #ffffff;
+  --wck-color-fg-2: #a3a3a3;
+  --wck-color-bg-1: #000000;
+  --wck-color-bg-2: #0a0a0a;
+  --wck-color-bg-3: #141414;
+  --wck-color-accent: #ffffff;
+  --wck-border-radius: 2px;
+}
+
+/* Remove default margins and paddings */
+#root {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  text-align: left;
+} 
+
+@layer utilities {
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
